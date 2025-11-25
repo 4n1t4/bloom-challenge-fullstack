@@ -1,4 +1,4 @@
-# Desafío Fullstack Jr 2025
+# Desafío Fullstack Entry / Jr 2025
 
 
 - [Objetivo](#objetivo)
@@ -22,7 +22,7 @@ Debes crear una app que al seleccionar una marca, muestre la sección de **pregu
 
 1. **Código:** haz un fork, súbelo a tu GitHub y agrega a `@fvr1` y `@imant1`. Envía el link a `devs@bloomreuse.com` con tu nombre en el asunto.
 
-2. **Video (máx. 4 min):** explica tu solución y reflexiona sobre:
+2. **Explicación:** en el README agrega una explicación cortita respondiendo las siguientes preguntas:
 
    * ¿Qué archivos/componentes creaste y qué hacen?
    * ¿Qué te gustó y qué mejorarías?
@@ -32,7 +32,9 @@ Debes crear una app que al seleccionar una marca, muestre la sección de **pregu
 
 4. **Criterios de evaluación:** Correcta visualización de preguntas frecuentes por marca. Separación clara de responsabilidades, carpetas y archivos en tu código. Capacidad de análisis técnico: pros, contras, mejoras.
 
-> ⚠️ No buscamos que sea perfecto. Queremos ver cómo piensas y estructuras tu código.
+5. **Bonus:** Agrega un video o link demo mostrando la solución.
+
+> ⚠️ Siéntete libre de modificar / refactorizar / agregar / eliminar lo que sea.
 
 
 
@@ -52,13 +54,13 @@ Se debería ver algo como esto:
 
 ## Código base
 
-Puedes modificar libremente cualquier archivo del proyecto, agregar librerías, usar tu IA favorita para programar. Lo importante es que entregues una **versión 0.1 funcional**, y luego nos expliques tu solución en un video. El código base incluye:
+Puedes modificar libremente cualquier archivo del proyecto, agregar librerías, usar tu IA favorita para programar. Lo importante es que entregues una **versión 0.1 funcional**, y luego nos expliques tu solución. El código base incluye:
 
 #### Backend
 
 Express + TS. Estructura del backend:
 
-* `/data`: simula la base de datos.
+* `/data`: **simula** la base de datos.
 * `/models`: define los tipos. Simula el modelo de una tabla en la base de datos.
 * `/services`: contiene lógica de negocios y para leer los datos.
 * `/api`: endpoints. Contiene `GET /brands` para listar de marcas y `GET /brands/:id` para obtener la configuración de una marca.
@@ -67,7 +69,7 @@ Deberás crear un modelo `BrandSetting` para configurar cada marca y completar l
 
 #### Frontend
 
-App Next.js con React y Tailwind. Debes:
+Template de App Next.js con React y Tailwind. Debes:
 
 1. Permitir selección de marca.
 2. Mostrar las preguntas frecuentes según configuración.
@@ -94,7 +96,7 @@ El flujo principal para hacer una venta a través de unas de las marcas de Bloom
 
 2. [Andesgear](https://circular.andesgear.cl/help/faq?view=seller): reventa outdoor, el producto se envía directamente al comprador. El envío puede ser con retiro a domicilio o por Blue Express. El vendedor únicamente puede recibir el pago por transferencia bancaria.
 
-3. [Milú Rugs](https://milu.bloomreuse.com/help/faq?view=seller): reventa de alfombras, el producto **siempre** pasa por un lugar de lavado y sanitizado. Se descuenta al vendedor un monto fijo de \$10.000 por el lavado. Solo existe la opción de retiro a domicilio como forma de envío; no se puede enviar el producto por Blue express. El vendedor puede recibir el pago por el 100% en un cupón de descuento (créditos) o el 80% por transferencia bancaria.
+3. [Roda](https://rodamarket.cl/help/faq?view=seller): reventa de bicicletas para niños. Solo existe la opción de retiro a domicilio como forma de envío; no se puede enviar el producto por Blue express. El vendedor puede recibir el pago por el 100% en un cupón de descuento (créditos) o el 80% por transferencia bancaria.
 
 4. [Kokoro](https://vintage.kokoro.cl/help/faq?view=seller): reventa de ropa, el producto **siempre** debe pasar por el taller de Kokoro para su revisión. En caso que no esté limpio,  el costo de la tintorería se descuenta del pago al vendedor. El envío puede ser con retiro a domicilio o por Blue Express. El vendedor puede recibir el pago por el 100% en un cupón de descuento (créditos) o el 80% por transferencia bancaria.
 

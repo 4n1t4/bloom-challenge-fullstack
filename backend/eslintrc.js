@@ -10,4 +10,10 @@ module.exports = {
     node: true,
     es6: true,
   },
+  settings: {
+    "import/resolver": {
+      typescript: true,
+      node: true,
+    },
+  },
 };

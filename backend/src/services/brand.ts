@@ -1,6 +1,6 @@
-import { Brand } from "../models/brand";
-import brands from "../data/brands";
-import brandSettings from "../data/brands-settings";
+import { Brand } from "@/models/brand";
+import brands from "@/data/brands";
+import brandSettings from "@/data/brands-settings";
 
 const BrandService = {
   retrieve(id: string): Promise<Brand> {

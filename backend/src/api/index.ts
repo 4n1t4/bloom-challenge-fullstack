@@ -1,12 +1,11 @@
 import { Router } from "express";
-import { getBrandById, listBrands } from "./brand";
+import routerBrands from "@/api/brands";
 
 const router = Router();
 
 router.get("/", (req, res) => {
-	res.send("API is working.");
+	res.send("API Bloom Reuse is working.");
 });
-router.get("/brands", listBrands);
-router.get("/brands/:id", getBrandById);
+router.use("/brands", routerBrands);
 
 export default router;

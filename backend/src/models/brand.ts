@@ -1,4 +1,4 @@
-import { BrandSettings } from "./brand-setting";
+import { BrandSettings } from "@/models/brand-setting";
 
 export type Brand = {
   id: string;

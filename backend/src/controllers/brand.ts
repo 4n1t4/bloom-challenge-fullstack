@@ -1,6 +1,5 @@
 import BrandService from "@/services/brand";
 import { Request, Response, NextFunction } from "express";
-
 /**
  * Controlador para listar todas las marcas
  * @description Obtiene todas las marcas desde el servicio de marcas y las devuelve en formato JSON.

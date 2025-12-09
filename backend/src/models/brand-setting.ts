@@ -74,10 +74,6 @@ export interface ServiceFees {
     description:string
 }
 
-
-
-
-
 export interface BrandSettings { 
   brandId:string;
   payment: PaymentConfig;

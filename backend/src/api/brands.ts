@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getBrandById, listBrands } from "@/controllers/brand";
+import { getBrandById, listBrands, getFAQsById } from "@/controllers/brand";
 
 /**
  * Router para las marcas
@@ -17,5 +17,6 @@ const routerBrands = Router();
 
 routerBrands.get("/", listBrands);
 routerBrands.get("/:id", getBrandById);
+routerBrands.get("/:id/faqs", getFAQsById);
 
 export default routerBrands;

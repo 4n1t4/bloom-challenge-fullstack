@@ -1,5 +1,6 @@
-import { get, ApiException } from "@/api/config";
-import type { Brand, Brands } from "@/models/brand";
+import { get} from "@/api/config";
+import { Brand, Brands} from "@/models/brand";
+import { BrandSettings} from "@/models/brands-settings";
 
 /**
  * Obtiene todas las marcas disponibles
@@ -40,5 +41,21 @@ export async function listBrands(): Promise<Brands> {
  */
 export async function getBrandById(id: string): Promise<Brand> {
   return get<Brand>(`/brands/${id}`);
+}
+
+/**
+ * Obtiene las FAQs de una marca por su ID
+ * @param id - ID de la marca
+ * @returns Promise con el array de FAQs procesadas
+ */
+export async function getFAQsByBrandId(id: string): Promise<FAQQuestion[]> {
+  return get<FAQQuestion[]>(`/brands/${id}/faqs`);
+}
+
+export interface FAQQuestion {
+  id: string;
+  question: string;
+  answer: string;
+  order: number;
 }
 

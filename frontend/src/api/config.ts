@@ -83,12 +83,17 @@ async function fetchApi<T>(
   const defaultHeaders: HeadersInit = {
     "Content-Type": "application/json",
     ...headers,
+    
   };
 
   try {
     const response = await fetch(url, {
       ...fetchOptions,
       headers: defaultHeaders,
+      cache: "no-store",       
+      next: { revalidate: 0 },  
+      mode: "cors",
+      
     });
 
     return handleResponse<T>(response);

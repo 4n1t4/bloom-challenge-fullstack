@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# API Client
 
-## Getting Started
+Configuración y funciones helper para realizar llamadas a la API del backend.
 
-First, run the development server:
+## Configuración
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+La URL base de la API se configura mediante la variable de entorno `NEXT_PUBLIC_API_URL` o por defecto usa `http://localhost:8000`.
+
+## Uso Básico
+
+### Importar funciones
+
+```typescript
+import { listBrands, getBrandById, ApiException } from "@/api";
+// o importar desde archivos específicos
+import { get, post } from "@/api/config";
+import type { Brand } from "@/models/brand";
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Ejemplo: Obtener todas las marcas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```typescript
+import { listBrands, ApiException } from "@/api";
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+async function fetchBrands() {
+  try {
+    const brands = await listBrands();
+    console.log(brands);
+  } catch (error) {
+    if (error instanceof ApiException) {
+      console.error(`Error ${error.status}: ${error.message}`);
+    }
+  }
+}
+```
 
-## Learn More
+### Ejemplo: Obtener una marca por ID
 
-To learn more about Next.js, take a look at the following resources:
+```typescript
+import { getBrandById, ApiException } from "@/api";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+async function fetchBrand(id: string) {
+  try {
+    const brand = await getBrandById(id);
+    console.log(brand.name, brand.settings);
+  } catch (error) {
+    if (error instanceof ApiException) {
+      console.error(`Error ${error.status}: ${error.message}`);
+    }
+  }
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Ejemplo: Uso directo de funciones HTTP
 
-## Deploy on Vercel
+```typescript
+import { get, post, ApiException } from "@/api";
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// GET con query parameters
+const data = await get<MyType>("/endpoint", {
+  params: { page: 1, limit: 10 }
+});
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+// POST
+const result = await post<ResponseType>("/endpoint", {
+  name: "Example",
+  value: 123
+});
+
+// Con headers personalizados
+const custom = await get<MyType>("/endpoint", {
+  headers: {
+    "Authorization": "Bearer token"
+  }
+});
+```
+
+## Modelos
+
+Los modelos TypeScript están disponibles en `@/models`:
+
+```typescript
+import type { Brand, BrandSettings, ShippingOption, PaymentOption } from "@/models";
+
+const brand: Brand = {
+  id: "karyn_coo",
+  name: "Karyn Coo",
+  url: "https://www.karyncoo.com",
+  settings: {
+    brandId: "karyn_coo",
+    shipping: {
+      options: ["home_pickup", "blue_express"]
+    },
+    payment: {
+      options: ["credits", "bank_transfer"],
+      creditsPercentage: 100,
+      bankTransferPercentage: 80
+    }
+  }
+};
+```
+
+## Manejo de Errores
+
+Todas las funciones lanzan `ApiException` en caso de error:
+
+```typescript
+import { ApiException } from "@/api";
+
+try {
+  const brands = await listBrands();
+} catch (error) {
+  if (error instanceof ApiException) {
+    // Error de la API
+    console.error(`Status: ${error.status}`);
+    console.error(`Message: ${error.message}`);
+    console.error(`Errors:`, error.errors);
+  } else {
+    // Error inesperado
+    console.error("Error desconocido:", error);
+  }
+}
+```
+

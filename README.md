@@ -13,7 +13,8 @@ Este enfoque narrativo guía la arquitectura y las decisiones técnicas tomadas 
 ### Ejemplo estático del Flujo
 ![alt text](image.png)
 
-<video controls src="screen-capture.webm" title="Title"></video>
+
+[screen-capture.webm](https://github.com/user-attachments/assets/eedf0587-f365-43bd-ac54-26021fde05de)
 
 ## Como levantar el proyecto
 Para ejecutar el proyecto en modo producción es necesario instalar las dependencias, generar el build optimizado y levantar el servidor que servirá los archivos construidos. Este flujo permite validar el comportamiento real de la aplicación tal como funcionará en un entorno productivo.

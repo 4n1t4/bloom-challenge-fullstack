@@ -120,10 +120,10 @@ const FAQService = {
         `Como vendedor/a tienes dos opciones para recibir tu pago: el ${transferPercentage}% del valor de la venta mediante transferencia bancaria o el 100% en forma de una gift card para volver comprar en el Ecommerce oficial de la marca.`
       );
       paymentLines.push(
-        `Si eliges gift card, ¡no hay tarifa! es decir, vender un artículo por $${exampleAmount.toLocaleString()} te da una gift card por $${exampleAmount.toLocaleString()}. Esta será enviada a tu mail una vez que el pedido haya sido recibido conforme por el comprador.`
+        `• Si eliges gift card, ¡no hay tarifa! es decir, vender un artículo por $${exampleAmount.toLocaleString()} te da una gift card por $${exampleAmount.toLocaleString()}. Esta será enviada a tu mail una vez que el pedido haya sido recibido conforme por el comprador.`
       );
       paymentLines.push(
-        `Si eliges efectivo, la tarifa es del ${feePercentage}%. Es decir, vender un artículo por $${exampleAmount.toLocaleString()} te da $${receivedAmount.toLocaleString()} en efectivo. Esta transferencia la realizamos cuando el pedido ha sido recibido conforme por el comprador.`
+        `• Si eliges efectivo, la tarifa es del ${feePercentage}%. Es decir, vender un artículo por $${exampleAmount.toLocaleString()} te da $${receivedAmount.toLocaleString()} en efectivo. Esta transferencia la realizamos cuando el pedido ha sido recibido conforme por el comprador.`
       );
     } else if (giftCardOption) {
       paymentLines.push(
@@ -151,11 +151,11 @@ const FAQService = {
     );
 
     if (homePickupOption) {
+    const prefix = (giftCardOption && transferOption) ? 'En ambos casos, ' : '';
       paymentLines.push(
-        `En ambos casos, si se eligió el retiro a domicilio de tus productos, se descontarán los $${homePickupOption.charge.toLocaleString()} por el costo de ese retiro.`
+        `${prefix}Si se eligió el retiro a domicilio de tus productos, se descontarán los $${homePickupOption.charge.toLocaleString()} por el costo de ese retiro.`
       );
     }
-
     if (service_fees?.description) {
       paymentLines.push(service_fees.description);
     }

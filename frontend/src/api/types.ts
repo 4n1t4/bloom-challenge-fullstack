@@ -3,14 +3,6 @@
  */
 
 /**
- * Respuesta estándar de la API
- */
-export type ApiResponse<T> = {
-  data: T;
-  message?: string;
-};
-
-/**
  * Error de la API
  */
 export type ApiError = {
@@ -26,3 +18,4 @@ export type FetchOptions = RequestInit & {
   params?: Record<string, string | number | boolean>;
 };
 
+// notar que tambien es posible realizar el tipo de la respuesta de la api, por ejemplo con data y message

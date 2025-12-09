@@ -1,18 +1,14 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getBrandById, getFAQsByBrandId, listBrands } from "@/api"
+import { getBrandById, getFAQsByBrandId} from "@/api"
 import { FAQSection } from "@/components/faq/faq-section"
 
 interface BrandPageProps {
   params: Promise<{ slug: string }>
 }
 
-export async function generateStaticParams() {
-  const brands = await listBrands()
-  return brands.map((brand) => ({
-    slug: brand.id,
-  }))
-}
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: BrandPageProps) {
   const { slug } = await params
@@ -27,7 +23,6 @@ export async function generateMetadata({ params }: BrandPageProps) {
     description: slug,
   }
 }
-
 
 export default async function BrandPage({ params }: BrandPageProps) {
   const { slug } = await params

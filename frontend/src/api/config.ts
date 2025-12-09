@@ -1,4 +1,4 @@
-import type { ApiResponse, ApiError, FetchOptions } from "./types";
+import type {ApiError, FetchOptions } from "@/api/types";
 
 /**
  * Configuración base de la API

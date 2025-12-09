@@ -1,6 +1,5 @@
 import { get} from "@/api/config";
 import { Brand, Brands} from "@/models/brand";
-import { BrandSettings} from "@/models/brands-settings";
 
 /**
  * Obtiene todas las marcas disponibles

@@ -6,7 +6,7 @@
 export { get, post, put, patch, del, API_BASE_URL, ApiException } from "@/api/config";
 
 // Tipos
-export type { ApiResponse, ApiError, FetchOptions } from "@/api/types";
+export type { ApiError, FetchOptions } from "@/api/types";
 
 // Funciones de API específicas para marcas
 export { listBrands, getBrandById, getFAQsByBrandId } from "@/api/brands/brands";

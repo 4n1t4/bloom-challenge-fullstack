@@ -182,7 +182,6 @@ El modelo `BrandSettings` contiene la configuración que determina el comportami
 > La elección entre un modelo relacional más detallado o uno basado en flags depende de los objetivos del sistema: si se busca una aplicación altamente extensible, marcas con configuraciones muy diferentes o condiciones de negocio que cambian con frecuencia, un modelo como el presentado aquí es más adecuado. En cambio, si el dominio es acotado y las reglas son relativamente estáticas, una representación basada en flags puede resultar más eficiente, sencilla de administrar y suficiente para las necesidades del proyecto.
 
 
-
 ## Flujos de Datos y Lógica de Negocio
 
 1.  **Listado de Marcas**:
@@ -202,6 +201,7 @@ El cliente API en `frontend/src/lib/api/` está diseñado para ser robusto y fle
 -   **Abstracción del Cliente HTTP**: En `config.ts`, se ha creado un wrapper simple sobre la API `fetch` nativa. Las funciones `api.get`, `api.post`, etc., centralizan la configuración de las peticiones (como headers y la URL base).
 
     Esta abstracción es importante porque hace que el cliente HTTP sea intercambiable. Si en el futuro se decidiera usar una librería como **Axios** por sus características avanzadas (ej. interceptores, cancelación de peticiones), solo sería necesario modificar la implementación dentro de `config.ts`. Ningún otro archivo que consume los servicios (`listBrands`, etc.) necesitaría cambios.
+    OJO: En la aplicación utilizo solo el método GET, el resto de las interfaces las cree solamente para detemrinar de manera clara que es posible estandarizar al cliente y de esta manera aislar las actualizaciones de provedores
 
 ## Estrategia de Renderizado: Server vs. Client Components
 
@@ -219,7 +219,7 @@ El cliente API en `frontend/src/lib/api/` está diseñado para ser robusto y fle
 -   **Arquitectura Limpia**: La separación entre frontend y backend, y la estructura de capas en cada uno, facilita la mantenibilidad y el escalado.
 -   **Lógica de Negocio Centralizada**: La generación de FAQs está encapsulada en el `FAQService` del backend, lo que significa que el frontend solo se preocupa de mostrar datos, no de cómo se crean.
 -   **Rendimiento Optimizado**: El uso de Server Components en Next.js para la carga inicial de datos asegura una experiencia de usuario rápida y amigable para el SEO.
--   **UI Tematizable y Reutilizable**: Gracias a **shadcn/ui** y las variables CSS, la interfaz es consistente y se adapta visualmente a cada marca sin recargar la página.
+-   **UI Tematizable y Reutilizable**: Gracias a **shadcn/ui** y las variables CSS, la interfaz es consistente y se adapta visualmente a cada marca sin recargar la página. El uso o la definición de temas en el `global.css` es simplemnten para dar un ejemplo de la flexibilidad que entrega el suo de esa configuración que detecta `data-brand` y determina las varibales del teheme a utilizar en las paginas que utilizan "layout" dentro de los [slugs]
 
 #### Puntos a Mejorar
 

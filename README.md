@@ -236,7 +236,7 @@ El cliente API en `frontend/src/lib/api/` está diseñado para ser robusto y fle
 
 Para llevar este proyecto a una escala de producción, se podrían tomar los siguientes pasos:
 
-1.  **Monorepo y Tipos Compartidos**: Migrar a un monorepo para compartir tipos y utilidades entre frontend y backend.
+1.  **Monorepo y Tipos Compartidos**: Migrar a un monorepo para compartir tipos y utilidades entre frontend y backend. Además, personalmente me gusta checkear esquemas entre solicitudes, en particular en este proyecto me gustaría la implementación de `Zod` para poder trabajar con esquemas en peticiones y tambien generar middlewares de validaciones de request de manera más sencilla y aislada en la responsabilidad de los validadores
 2.  **Capa de Persistencia Real**: Implementar una base de datos con un ORM como Prisma para gestionar los datos de marcas y configuraciones.
 3.  **Autenticación y Autorización**: Añadir un sistema para que los administradores de marca puedan gestionar sus solicitudes a Bloom reuse.
 4.  **Caching y Optimización**: Implementar estrategias de caching en Next.js (revalidate) para reducir las llamadas a la API para datos que no cambian con frecuencia (que deberían ser la mayoría, considerando que en Bloom Reuse la mayor parte del contenido es estático o semiestático). Esto permite mejorar el rendimiento, disminuir costos de infraestructura y entregar una experiencia más rápida al usuario.
